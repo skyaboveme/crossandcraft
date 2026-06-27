@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact Us | Cross & Craft Co."
+  description="Get in touch with Cross & Craft Co. Questions about our needlepoint canvases, custom orders, or wholesale? We'd love to hear from you."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-20 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">Get In Touch</span>
+      <h1 class="text-4xl md:text-6xl mb-4" style="font-family: var(--font-display); color: var(--color-cream);">
+        Contact <span class="text-gradient">Us</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);"></div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        We'd love to hear from you — whether it's about a custom order, wholesale inquiry, or just to say hello.
+      </p>
+    </section>
+
+    <!-- ===== CONTACT FORM & INFO ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <!-- Form -->
+          <div class="lg:col-span-3">
+            <h2 class="text-2xl mb-6" style="font-family: var(--font-display); color: var(--color-espresso);">Send Us a Message</h2>
+            <form class="space-y-6" id="contact-form">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="first-name" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">First Name</label>
+                  <input type="text" id="first-name" name="firstName" required
+                    class="w-full px-4 py-3 text-sm"
+                    style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                  />
+                </div>
+                <div>
+                  <label for="last-name" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Last Name</label>
+                  <input type="text" id="last-name" name="lastName" required
+                    class="w-full px-4 py-3 text-sm"
+                    style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Email</label>
+                <input type="email" id="email" name="email" required
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                />
+              </div>
+              <div>
+                <label for="subject" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Subject</label>
+                <select id="subject" name="subject"
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                >
+                  <option value="">Select a topic...</option>
+                  <option value="order">Order Question</option>
+                  <option value="custom">Custom Canvas Request</option>
+                  <option value="wholesale">Wholesale Inquiry</option>
+                  <option value="finishing">Finishing Services</option>
+                  <option value="events">Trunk Shows & Events</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="message" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Message</label>
+                <textarea id="message" name="message" rows="5" required
+                  class="w-full px-4 py-3 text-sm resize-none"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary">
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Info sidebar -->
+          <div class="lg:col-span-2">
+            <div class="p-8" style="background: var(--color-ivory); border: 1px solid var(--color-linen);">
+              <h3 class="text-lg mb-6" style="font-family: var(--font-display); color: var(--color-espresso);">Other Ways to Reach Us</h3>
+
+              <div class="space-y-6">
+                <div>
+                  <span class="text-[0.65rem] uppercase tracking-widest block mb-1" style="color: var(--color-gold); font-family: var(--font-body);">Email</span>
+                  <a href="mailto:hello@crossandcraftco.com" class="text-sm hover:opacity-70 transition-opacity" style="color: var(--color-charcoal);">hello@crossandcraftco.com</a>
+                </div>
+                <div>
+                  <span class="text-[0.65rem] uppercase tracking-widest block mb-1" style="color: var(--color-gold); font-family: var(--font-body);">Phone</span>
+                  <a href="tel:+15121234567" class="text-sm hover:opacity-70 transition-opacity" style="color: var(--color-charcoal);">(512) 123-4567</a>
+                </div>
+                <div>
+                  <span class="text-[0.65rem] uppercase tracking-widest block mb-1" style="color: var(--color-gold); font-family: var(--font-body);">Follow Along</span>
+                  <a href="https://instagram.com/crossandcraftco" target="_blank" rel="noopener" class="text-sm hover:opacity-70 transition-opacity" style="color: var(--color-charcoal);">@crossandcraftco</a>
+                </div>
+                <div>
+                  <span class="text-[0.65rem] uppercase tracking-widest block mb-1" style="color: var(--color-gold); font-family: var(--font-body);">Response Time</span>
+                  <p class="text-sm" style="color: var(--color-charcoal);">We typically respond within 1–2 business days.</p>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6" style="border-top: 1px solid var(--color-linen);">
+                <p class="text-xs leading-relaxed" style="color: var(--color-taupe); font-family: var(--font-accent); font-style: italic;">
+                  "Every stitch is an act of creativity — every finished piece, a story worth telling."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

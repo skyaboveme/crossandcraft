@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    title: 'Pillow Finishing',
+    description: 'Transform your completed canvas into a beautifully backed pillow with custom cording, velvet backing, and optional monogram.',
+    price: 'From $95',
+    timeline: '4–6 weeks',
+  },
+  {
+    title: 'Ornament Finishing',
+    description: 'Professional finishing for holiday ornaments, including backing, cording, and a hanging loop in your choice of material.',
+    price: 'From $45',
+    timeline: '3–4 weeks',
+  },
+  {
+    title: 'Belt Finishing',
+    description: 'Custom leather belt construction from your stitched canvas. Choose buckle style, leather color, and sizing.',
+    price: 'From $125',
+    timeline: '6–8 weeks',
+  },
+  {
+    title: 'Clutch & Purse Finishing',
+    description: 'Your needlepoint transformed into an elegant evening clutch or purse with premium hardware and lining.',
+    price: 'From $150',
+    timeline: '6–8 weeks',
+  },
+  {
+    title: 'Framing',
+    description: 'Archival-quality stretching and framing. We work with select framers to ensure your piece is protected and beautifully displayed.',
+    price: 'From $85',
+    timeline: '4–6 weeks',
+  },
+  {
+    title: 'Stocking Finishing',
+    description: 'Full stocking construction with velvet lining, personalized cuff, and optional name embroidery.',
+    price: 'From $135',
+    timeline: '6–10 weeks',
+  },
+];
+---
+
+<BaseLayout
+  title="Finishing Services | Cross & Craft Co."
+  description="Professional needlepoint finishing services — pillows, ornaments, belts, clutches, framing, and stockings. We bring your stitched canvas to life."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-20 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">Expert Craftsmanship</span>
+      <h1 class="text-4xl md:text-6xl mb-4" style="font-family: var(--font-display); color: var(--color-cream);">
+        Finishing <span class="text-gradient">Services</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);"></div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        The finishing touch — transforming your stitched canvas into a finished treasure.
+      </p>
+    </section>
+
+    <!-- ===== SERVICES GRID ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <div class="p-8 transition-all duration-300 hover:-translate-y-1" style="background: white; border: 1px solid var(--color-linen);">
+              <h3 class="text-lg mb-3" style="font-family: var(--font-display); color: var(--color-espresso);">{service.title}</h3>
+              <p class="text-sm leading-relaxed mb-6" style="color: var(--color-charcoal); font-family: var(--font-body);">
+                {service.description}
+              </p>
+              <div class="flex items-center justify-between pt-4" style="border-top: 1px solid var(--color-linen);">
+                <span class="text-sm font-semibold" style="color: var(--color-gold); font-family: var(--font-display);">{service.price}</span>
+                <span class="text-xs" style="color: var(--color-taupe); font-family: var(--font-body);">{service.timeline}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-ivory);">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">The Process</span>
+        <h2 class="text-3xl mb-12" style="font-family: var(--font-display); color: var(--color-espresso);">How It Works</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-lg font-bold" style="background: var(--color-espresso); color: var(--color-gold); font-family: var(--font-display);">1</div>
+            <h3 class="text-base font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-espresso);">Contact Us</h3>
+            <p class="text-sm" style="color: var(--color-charcoal);">Tell us about your finished canvas and the type of finishing you'd like.</p>
+          </div>
+          <div>
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-lg font-bold" style="background: var(--color-espresso); color: var(--color-gold); font-family: var(--font-display);">2</div>
+            <h3 class="text-base font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-espresso);">Ship Your Canvas</h3>
+            <p class="text-sm" style="color: var(--color-charcoal);">We'll provide shipping instructions and a prepaid label for your canvas.</p>
+          </div>
+          <div>
+            <div class="w-12 h-12 mx-auto mb-4 flex items-center justify-center text-lg font-bold" style="background: var(--color-espresso); color: var(--color-gold); font-family: var(--font-display);">3</div>
+            <h3 class="text-base font-semibold mb-2" style="font-family: var(--font-display); color: var(--color-espresso);">Receive Your Treasure</h3>
+            <p class="text-sm" style="color: var(--color-charcoal);">Your professionally finished piece is shipped back to you, ready to be treasured.</p>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <a href="/contact" class="btn-primary">
+            <span>Request a Quote</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

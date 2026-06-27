@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Cross & Craft Co. | Premium Hand-Painted Needlepoint',
+  description = 'Discover exquisite hand-painted needlepoint canvases, kits, and accessories. From florals to holiday designs, find your next masterpiece at Cross & Craft Co.',
+  image = '/images/og-default.jpg',
+} = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cross & Craft Co." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Cross & Craft Co.",
+      "description": "Premium hand-painted needlepoint canvases, kits, and accessories.",
+      "url": "https://crossandcraftco.com",
+      "priceRange": "$$",
+      "sameAs": [],
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col" style="background-color: var(--color-cream); color: var(--color-charcoal);">
+    <slot />
+  </body>
+</html>

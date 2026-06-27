@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  price: number;
+  comparePrice?: number;
+  image: string;
+  category: string;
+  designer?: string;
+  inStock?: boolean;
+  featured?: boolean;
+  index?: number;
+}
+
+const {
+  title,
+  slug,
+  price,
+  comparePrice,
+  image,
+  category,
+  designer,
+  inStock = true,
+  featured = false,
+  index = 0,
+} = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+}).format(price);
+
+const formattedComparePrice = comparePrice
+  ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(comparePrice)
+  : null;
+
+const animationDelay = `animation-delay: ${index * 0.1}s;`;
+---
+
+<a href={`/products/${slug}`} class="product-card block animate-fade-in-up group" style={animationDelay}>
+  <div class="product-card__image">
+    <!-- Placeholder gradient for demo — will be replaced by real product images -->
+    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-linen) 0%, var(--color-warm-gray) 100%);">
+      <div class="text-center p-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-3" style="color: var(--color-taupe);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
+        </svg>
+        <span class="text-xs uppercase tracking-widest" style="color: var(--color-taupe); font-family: var(--font-body);">{title}</span>
+      </div>
+    </div>
+
+    {/* Sale badge */}
+    {comparePrice && (
+      <span class="badge badge-sale absolute top-3 left-3">Sale</span>
+    )}
+
+    {/* Quick view overlay */}
+    <div class="product-card__quick-view">
+      <span class="btn-primary text-xs px-4 py-2">
+        <span>Quick View</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="product-card__info">
+    <div class="product-card__category">{category}</div>
+    <h3 class="product-card__title">{title}</h3>
+    {designer && (
+      <p class="text-xs mb-2" style="color: var(--color-taupe); font-family: var(--font-accent); font-style: italic;">
+        by {designer}
+      </p>
+    )}
+    <div class="flex items-center gap-2">
+      <span class="product-card__price">{formattedPrice}</span>
+      {formattedComparePrice && (
+        <span class="product-card__compare-price">{formattedComparePrice}</span>
+      )}
+    </div>
+    {!inStock && (
+      <span class="text-xs mt-2 inline-block" style="color: var(--color-dusty-rose);">Sold Out</span>
+    )}
+  </div>
+</a>

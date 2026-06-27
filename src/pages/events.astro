@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const events = [
+  {
+    title: 'Summer Stitching Social',
+    date: 'July 19, 2026',
+    time: '10:00 AM – 2:00 PM',
+    location: 'The Needlepoint Guild, Austin TX',
+    description: 'Join us for a morning of stitching, refreshments, and a first look at our new university collection. All skill levels welcome.',
+    type: 'Trunk Show',
+  },
+  {
+    title: 'Holiday Preview Trunk Show',
+    date: 'September 13, 2026',
+    time: '11:00 AM – 4:00 PM',
+    location: 'Stitchery Lane, Dallas TX',
+    description: 'Preview our 2026 holiday collection before it launches online. Exclusive event pricing and a complimentary stitch guide with every purchase.',
+    type: 'Trunk Show',
+  },
+  {
+    title: 'Beginner Needlepoint Workshop',
+    date: 'October 4, 2026',
+    time: '1:00 PM – 3:30 PM',
+    location: 'Cross & Craft Co. Studio',
+    description: 'New to needlepoint? Learn the basics in this hands-on workshop. We cover stitches, canvas prep, thread selection, and finishing tips. Kit included.',
+    type: 'Workshop',
+  },
+  {
+    title: 'Holiday Stitching Retreat',
+    date: 'November 29, 2026',
+    time: '9:00 AM – 5:00 PM',
+    location: 'The Grand Ballroom, Houston TX',
+    description: 'A day of quiet stitching, refreshments, and fellowship as we get into the holiday spirit. Bring a project or start our exclusive holiday ornament series.',
+    type: 'Retreat',
+  },
+];
+---
+
+<BaseLayout
+  title="Trunk Shows & Events | Cross & Craft Co."
+  description="Join Cross & Craft Co. at trunk shows, workshops, and stitching retreats. See our hand-painted needlepoint canvases in person and connect with fellow stitchers."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-20 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">Come Stitch With Us</span>
+      <h1 class="text-4xl md:text-6xl mb-4" style="font-family: var(--font-display); color: var(--color-cream);">
+        Trunk Shows & <span class="text-gradient">Events</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);"></div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        There's nothing quite like gathering to create together.
+      </p>
+    </section>
+
+    <!-- ===== EVENTS LIST ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-4xl mx-auto space-y-6">
+        {events.map((event) => (
+          <div class="p-8 transition-all duration-300 hover:-translate-y-1" style="background: white; border: 1px solid var(--color-linen);">
+            <div class="flex flex-col md:flex-row md:items-start gap-6">
+              <!-- Date badge -->
+              <div class="shrink-0 text-center p-4 w-24" style="background: var(--color-ivory); border: 1px solid var(--color-linen);">
+                <span class="block text-xs uppercase tracking-wider" style="color: var(--color-gold); font-family: var(--font-body);">
+                  {event.date.split(' ')[0]}
+                </span>
+                <span class="block text-3xl font-bold leading-none mt-1" style="font-family: var(--font-display); color: var(--color-espresso);">
+                  {event.date.split(' ')[1].replace(',', '')}
+                </span>
+              </div>
+
+              <!-- Details -->
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3 class="text-lg" style="font-family: var(--font-display); color: var(--color-espresso);">{event.title}</h3>
+                  <span class="badge badge-new">{event.type}</span>
+                </div>
+                <p class="text-sm leading-relaxed mb-4" style="color: var(--color-charcoal); font-family: var(--font-body);">
+                  {event.description}
+                </p>
+                <div class="flex flex-wrap gap-4 text-xs" style="color: var(--color-taupe); font-family: var(--font-body);">
+                  <span>🕐 {event.time}</span>
+                  <span>📍 {event.location}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== HOST CTA ===== -->
+    <section class="py-16 px-4 text-center" style="background-color: var(--color-ivory);">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl mb-3" style="font-family: var(--font-display); color: var(--color-espresso);">Host a Trunk Show</h2>
+        <p class="text-sm mb-6" style="color: var(--color-charcoal); font-family: var(--font-body);">
+          Own a needlepoint shop or want to host a stitching event? We'd love to partner with you. Contact us to learn about hosting opportunities.
+        </p>
+        <a href="/contact" class="btn-primary">
+          <span>Get In Touch</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

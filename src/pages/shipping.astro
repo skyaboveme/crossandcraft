@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Shipping & Returns | Cross & Craft Co."
+  description="Shipping rates, delivery times, and return policy for Cross & Craft Co. needlepoint canvases and kits."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-16 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <h1 class="text-4xl md:text-5xl mb-2" style="font-family: var(--font-display); color: var(--color-cream);">
+        Shipping & <span class="text-gradient">Returns</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);">
+      </div>
+    </section>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-3xl mx-auto prose-content">
+        <h2>Shipping</h2>
+        <h3>Domestic (United States)</h3>
+        <table>
+          <thead>
+            <tr><th>Method</th><th>Delivery Time</th><th>Cost</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard Shipping</td><td>5–7 business days</td><td>$7.95</td></tr>
+            <tr><td>Priority Shipping</td><td>2–3 business days</td><td>$14.95</td></tr>
+            <tr><td>Express Shipping</td><td>1–2 business days</td><td>$24.95</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Free shipping</strong> on all orders over $150.</p>
+        <p>Orders are processed within 1–2 business days. You will receive a shipping confirmation email with tracking information once your order ships.</p>
+
+        <h3>International</h3>
+        <p>We currently ship to Canada and the United Kingdom. International shipping rates are calculated at checkout based on weight and destination. Delivery typically takes 7–14 business days. Customers are responsible for any customs duties or import taxes.</p>
+
+        <h2>Returns & Exchanges</h2>
+        <p>We want you to love your purchase. If for any reason you're not satisfied, we accept returns within <strong>30 days</strong> of delivery, provided the item is:</p>
+        <ul>
+          <li>In its original, unused condition</li>
+          <li>In original packaging</li>
+          <li>Accompanied by proof of purchase</li>
+        </ul>
+        <p><strong>Please note:</strong> Because our canvases are hand-painted, slight variations in color and detail are inherent to the artisan process and are not considered defects.</p>
+
+        <h3>How to Initiate a Return</h3>
+        <ol>
+          <li>Email us at <a href="mailto:hello@crossandcraftco.com">hello@crossandcraftco.com</a> with your order number and reason for return.</li>
+          <li>We'll provide a return authorization and shipping instructions.</li>
+          <li>Once received and inspected, your refund will be processed within 5–7 business days.</li>
+        </ol>
+
+        <h3>Exchanges</h3>
+        <p>We're happy to exchange items for a different design of equal value. Contact us and we'll help coordinate the swap.</p>
+
+        <h3>Damaged Items</h3>
+        <p>If your order arrives damaged, please contact us within 48 hours with photos of the damage. We'll arrange a replacement at no additional cost.</p>
+
+        <p class="text-center mt-12" style="font-family: var(--font-accent); font-style: italic; color: var(--color-taupe);">
+          Questions? <a href="/contact" style="color: var(--color-gold);">Contact us</a> — we're always happy to help.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose-content h2 {
+    font-family: var(--font-display);
+    color: var(--color-espresso);
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-linen);
+  }
+  .prose-content h3 {
+    font-family: var(--font-display);
+    color: var(--color-espresso);
+    font-size: 1.125rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-content p, .prose-content li {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-charcoal);
+    margin-bottom: 0.75rem;
+  }
+  .prose-content ul, .prose-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-content li { margin-bottom: 0.375rem; }
+  .prose-content a { color: var(--color-gold); text-decoration: underline; }
+  .prose-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+  .prose-content th {
+    text-align: left;
+    padding: 0.75rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-taupe);
+    border-bottom: 2px solid var(--color-linen);
+  }
+  .prose-content td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-linen);
+    color: var(--color-charcoal);
+  }
+  .prose-content strong { color: var(--color-espresso); }
+</style>

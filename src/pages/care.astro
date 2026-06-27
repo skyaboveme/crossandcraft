@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const instructions = [
+  {
+    title: 'Before You Begin',
+    icon: '✂️',
+    steps: [
+      'Wash your hands before handling your canvas to avoid transferring oils.',
+      'Work in a clean, well-lit area away from food and drink.',
+      'Use a frame or stretcher bars to keep your canvas taut while stitching.',
+    ],
+  },
+  {
+    title: 'While Stitching',
+    icon: '🧵',
+    steps: [
+      'Use thread lengths of 12–18 inches to prevent fraying and tangling.',
+      'Maintain consistent tension — not too tight, not too loose.',
+      'Cover unused portions of the canvas with a clean cloth to keep it pristine.',
+      'Store your project in a cotton pillowcase or canvas bag when not working on it.',
+    ],
+  },
+  {
+    title: 'Cleaning Your Finished Piece',
+    icon: '🫧',
+    steps: [
+      'If your finished canvas needs cleaning, use cold water and a gentle wool wash (like Soak or Eucalan).',
+      'Lay the canvas flat in the water and let it soak for 15–20 minutes. Do not scrub or wring.',
+      'Roll in a clean towel to remove excess water, then block on a stretcher frame or blocking board.',
+      'Allow to air dry completely before finishing.',
+    ],
+  },
+  {
+    title: 'Finished Piece Care',
+    icon: '🏡',
+    steps: [
+      'Keep needlepoint pillows and décor out of direct sunlight to prevent fading.',
+      'Spot clean with a damp cloth when needed. Avoid harsh chemicals.',
+      'For deep cleaning of finished items, consult a professional textile cleaner.',
+      'Store seasonal items (stockings, ornaments) in acid-free tissue paper.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Care Instructions | Cross & Craft Co."
+  description="How to care for your needlepoint canvas and finished pieces. Tips for handling, cleaning, and preserving your Cross & Craft Co. needlepoint."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-16 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <h1 class="text-4xl md:text-5xl mb-2" style="font-family: var(--font-display); color: var(--color-cream);">
+        Care <span class="text-gradient">Instructions</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);">
+      </div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        A well-cared-for canvas is a treasure for generations.
+      </p>
+    </section>
+
+    <!-- ===== INSTRUCTIONS ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-4xl mx-auto space-y-8">
+        {instructions.map((section) => (
+          <div class="p-8" style="background: white; border: 1px solid var(--color-linen);">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-2xl">{section.icon}</span>
+              <h2 class="text-xl" style="font-family: var(--font-display); color: var(--color-espresso);">{section.title}</h2>
+            </div>
+            <ol class="space-y-3 pl-6">
+              {section.steps.map((step, i) => (
+                <li class="text-sm leading-relaxed flex items-start gap-3" style="color: var(--color-charcoal); font-family: var(--font-body);">
+                  <span class="shrink-0 w-6 h-6 flex items-center justify-center text-xs font-bold" style="background: var(--color-ivory); color: var(--color-gold); font-family: var(--font-display);">{i + 1}</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== HELP CTA ===== -->
+    <section class="py-12 px-4 text-center" style="background-color: var(--color-ivory);">
+      <p class="text-sm mb-4" style="color: var(--color-charcoal); font-family: var(--font-body);">
+        Have a care question we didn't cover?
+      </p>
+      <a href="/contact" class="btn-secondary">
+        Ask Us Anything
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

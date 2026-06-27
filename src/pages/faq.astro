@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    category: 'Orders & Products',
+    questions: [
+      {
+        q: 'What comes in a needlepoint kit?',
+        a: 'Each kit includes a hand-painted canvas, a full set of threads (Appleton wool, DMC cotton, or silk depending on the design), a needle, and a stitch guide with detailed instructions.',
+      },
+      {
+        q: 'Are your canvases hand-painted?',
+        a: 'Yes! Every canvas is meticulously hand-painted by skilled artisans. Because of this, slight variations in color and detail are natural and part of what makes each piece unique.',
+      },
+      {
+        q: 'What mesh count do you use?',
+        a: 'We offer designs on 13, 14, and 18 mesh canvas depending on the design. The mesh count is listed on each product page. Higher mesh counts allow for finer detail.',
+      },
+      {
+        q: 'Can I order just the canvas without threads?',
+        a: 'In most cases, yes. Contact us and we can offer canvas-only pricing for any design in our catalog.',
+      },
+      {
+        q: 'Do you offer custom designs?',
+        a: 'We love custom projects! Whether it\'s a family crest, university logo, or a personal design, reach out through our contact page and we\'ll discuss options and pricing.',
+      },
+    ],
+  },
+  {
+    category: 'Shipping & Returns',
+    questions: [
+      {
+        q: 'How long does shipping take?',
+        a: 'Standard shipping takes 5–7 business days, Priority takes 2–3 days, and Express ships in 1–2 days. Orders are processed within 1–2 business days.',
+      },
+      {
+        q: 'Do you offer free shipping?',
+        a: 'Yes! All orders over $150 ship free within the United States.',
+      },
+      {
+        q: 'What is your return policy?',
+        a: 'We accept returns within 30 days of delivery for unused items in original packaging. See our full Shipping & Returns page for details.',
+      },
+      {
+        q: 'Do you ship internationally?',
+        a: 'We currently ship to Canada and the United Kingdom. International rates are calculated at checkout.',
+      },
+    ],
+  },
+  {
+    category: 'Finishing & Care',
+    questions: [
+      {
+        q: 'Do you offer finishing services?',
+        a: 'Yes! We offer professional finishing for pillows, ornaments, belts, clutches, frames, and stockings. Visit our Finishing Services page for pricing and turnaround times.',
+      },
+      {
+        q: 'How do I clean my needlepoint?',
+        a: 'Gently soak in cold water with a wool-safe detergent. Never scrub or wring. Lay flat on a towel, then block while drying. See our Care Instructions page for full details.',
+      },
+      {
+        q: 'How should I store my canvas while working on it?',
+        a: 'Keep it in a clean cotton pillowcase or canvas bag. Cover unused portions while stitching and store away from pets, food, and direct sunlight.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ | Cross & Craft Co."
+  description="Frequently asked questions about Cross & Craft Co. needlepoint canvases, kits, shipping, returns, finishing services, and care."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-16 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <h1 class="text-4xl md:text-5xl mb-2" style="font-family: var(--font-display); color: var(--color-cream);">
+        Frequently Asked <span class="text-gradient">Questions</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);">
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTIONS ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-3xl mx-auto space-y-12">
+        {faqs.map((section) => (
+          <div>
+            <h2 class="text-xl mb-6 pb-3" style="font-family: var(--font-display); color: var(--color-espresso); border-bottom: 1px solid var(--color-linen);">
+              {section.category}
+            </h2>
+            <div class="space-y-4">
+              {section.questions.map((item) => (
+                <details class="group" style="border: 1px solid var(--color-linen); background: white;">
+                  <summary class="flex items-center justify-between cursor-pointer p-5 text-sm font-medium hover:bg-gray-50/50 transition-colors" style="font-family: var(--font-body); color: var(--color-espresso);">
+                    {item.q}
+                    <svg class="shrink-0 ml-4 transition-transform group-open:rotate-180" style="width: 16px; height: 16px; min-width: 16px; color: var(--color-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </summary>
+                  <div class="px-5 pb-5">
+                    <p class="text-sm leading-relaxed" style="color: var(--color-charcoal); font-family: var(--font-body);">
+                      {item.a}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== STILL HAVE QUESTIONS ===== -->
+    <section class="py-12 px-4 text-center" style="background-color: var(--color-ivory);">
+      <h2 class="text-2xl mb-3" style="font-family: var(--font-display); color: var(--color-espresso);">Still Have Questions?</h2>
+      <p class="text-sm mb-6" style="color: var(--color-charcoal); font-family: var(--font-body);">
+        We're here to help. Reach out and we'll get back to you within 1–2 business days.
+      </p>
+      <a href="/contact" class="btn-primary">
+        <span>Contact Us</span>
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

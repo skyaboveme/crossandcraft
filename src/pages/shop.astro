@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+import catalogData from '../content/products/catalog.json';
+
+const allProducts = catalogData as any[];
+const categories = [...new Set(allProducts.map((p: any) => p.category))].sort();
+---
+
+<BaseLayout
+  title="Shop All | Cross & Craft Co."
+  description="Browse our collection of hand-painted needlepoint canvases, kits, and accessories. From university designs to holiday stockings — find your next masterpiece."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== PAGE HERO ===== -->
+    <section class="py-20 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">The Collection</span>
+      <h1 class="text-4xl md:text-6xl mb-4" style="font-family: var(--font-display); color: var(--color-cream);">
+        Shop <span class="text-gradient">All Designs</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);"></div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        Every canvas is hand-painted with care and stitched with love.
+      </p>
+    </section>
+
+    <!-- ===== FILTER BAR ===== -->
+    <section class="py-6 px-4" style="background-color: var(--color-ivory); border-bottom: 1px solid var(--color-linen);">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="/shop" class="filter-btn active" data-category="all">All</a>
+          {categories.map((cat: string) => (
+            <a href={`/shop?category=${cat.toLowerCase().replace(/\s+/g, '-')}`} class="filter-btn" data-category={cat.toLowerCase().replace(/\s+/g, '-')}>
+              {cat}
+            </a>
+          ))}
+        </div>
+        <span class="text-xs" style="color: var(--color-taupe); font-family: var(--font-body);" id="product-count">
+          {allProducts.length} designs
+        </span>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTS GRID ===== -->
+    <section class="py-16 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+          {allProducts.map((product: any, i: number) => (
+            <div class="product-item" data-category={product.category.toLowerCase().replace(/\s+/g, '-')}>
+              <ProductCard
+                title={product.title}
+                slug={product.slug}
+                price={product.price}
+                comparePrice={product.comparePrice}
+                image={product.image}
+                category={product.category}
+                designer={product.designer}
+                inStock={product.inStock}
+                featured={product.featured}
+                index={i}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .filter-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background: transparent;
+    border: 1px solid var(--color-linen);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--color-espresso);
+    color: var(--color-cream);
+    border-color: var(--color-espresso);
+  }
+</style>
+
+<script>
+  // Client-side category filtering
+  const params = new URLSearchParams(window.location.search);
+  const activeCategory = params.get('category') || 'all';
+  const filterParam = params.get('filter');
+
+  const items = document.querySelectorAll('.product-item');
+  const buttons = document.querySelectorAll('.filter-btn');
+  const countEl = document.getElementById('product-count');
+
+  // Set active button
+  buttons.forEach((btn) => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-category') === activeCategory) {
+      btn.classList.add('active');
+    }
+  });
+
+  // Filter products
+  let visible = 0;
+  items.forEach((item) => {
+    const cat = item.getAttribute('data-category');
+    if (activeCategory === 'all' || cat === activeCategory) {
+      (item as HTMLElement).style.display = '';
+      visible++;
+    } else {
+      (item as HTMLElement).style.display = 'none';
+    }
+  });
+
+  if (countEl) {
+    countEl.textContent = `${visible} design${visible !== 1 ? 's' : ''}`;
+  }
+</script>

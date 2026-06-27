@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const benefits = [
+  'Access to our full catalog at wholesale pricing',
+  'Custom canvas design collaboration',
+  'Co-branded marketing materials',
+  'Priority access to new collections',
+  'Dedicated account representative',
+  'Trunk show support and scheduling',
+];
+---
+
+<BaseLayout
+  title="Wholesale | Cross & Craft Co."
+  description="Partner with Cross & Craft Co. for wholesale needlepoint canvases and kits. Premium hand-painted designs for specialty retailers and needlepoint shops."
+>
+  <Header />
+
+  <main style="padding-top: 7rem;">
+    <!-- ===== HERO ===== -->
+    <section class="py-20 px-4 text-center" style="background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-espresso) 100%);">
+      <span class="text-xs tracking-[0.3em] uppercase mb-3 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">For Retailers</span>
+      <h1 class="text-4xl md:text-6xl mb-4" style="font-family: var(--font-display); color: var(--color-cream);">
+        Wholesale <span class="text-gradient">Partners</span>
+      </h1>
+      <div class="w-16 h-px mx-auto" style="background: linear-gradient(to right, transparent, var(--color-gold), transparent);"></div>
+      <p class="text-base mt-4 max-w-lg mx-auto" style="color: var(--color-warm-gray); font-family: var(--font-accent); font-style: italic;">
+        Bring the beauty of hand-painted needlepoint to your shop.
+      </p>
+    </section>
+
+    <!-- ===== INFO ===== -->
+    <section class="py-20 px-4" style="background-color: var(--color-cream);">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div>
+            <span class="text-xs tracking-[0.3em] uppercase mb-4 inline-block" style="color: var(--color-gold); font-family: var(--font-body);">Partnership</span>
+            <h2 class="text-3xl mb-6" style="font-family: var(--font-display); color: var(--color-espresso); line-height: 1.2;">
+              A Partnership Built on <span class="text-gradient">Shared Values</span>
+            </h2>
+            <p class="text-base leading-relaxed mb-5" style="color: var(--color-charcoal); font-family: var(--font-body);">
+              We partner with specialty needlepoint shops, boutiques, and gift retailers who share our commitment to quality craftsmanship and personal service.
+            </p>
+            <p class="text-base leading-relaxed mb-8" style="color: var(--color-charcoal); font-family: var(--font-body);">
+              Our wholesale program is designed to support your business with competitive pricing, reliable fulfillment, and marketing support. We believe in building lasting relationships with our retail partners.
+            </p>
+
+            <h3 class="text-lg mb-4" style="font-family: var(--font-display); color: var(--color-espresso);">Partner Benefits</h3>
+            <ul class="space-y-3">
+              {benefits.map((benefit) => (
+                <li class="flex items-start gap-3 text-sm" style="color: var(--color-charcoal); font-family: var(--font-body);">
+                  <span style="color: var(--color-gold);">✦</span>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Application form -->
+          <div class="p-8" style="background: var(--color-ivory); border: 1px solid var(--color-linen);">
+            <h3 class="text-lg mb-6" style="font-family: var(--font-display); color: var(--color-espresso);">Apply for Wholesale</h3>
+            <form class="space-y-5" id="wholesale-form">
+              <div>
+                <label for="w-shop" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Shop Name</label>
+                <input type="text" id="w-shop" name="shopName" required
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                />
+              </div>
+              <div>
+                <label for="w-name" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Contact Name</label>
+                <input type="text" id="w-name" name="contactName" required
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                />
+              </div>
+              <div>
+                <label for="w-email" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Email</label>
+                <input type="email" id="w-email" name="email" required
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                />
+              </div>
+              <div>
+                <label for="w-website" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Website (optional)</label>
+                <input type="url" id="w-website" name="website"
+                  class="w-full px-4 py-3 text-sm"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                  placeholder="https://"
+                />
+              </div>
+              <div>
+                <label for="w-message" class="block text-xs font-medium tracking-wider uppercase mb-2" style="color: var(--color-charcoal); font-family: var(--font-body);">Tell Us About Your Shop</label>
+                <textarea id="w-message" name="message" rows="4"
+                  class="w-full px-4 py-3 text-sm resize-none"
+                  style="background: white; border: 1px solid var(--color-linen); font-family: var(--font-body); color: var(--color-espresso); outline: none;"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">
+                <span>Submit Application</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

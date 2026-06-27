@@ -12,6 +12,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.0.3"
+    "@stripe/stripe-js": "^9.8.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^7.0.3",
+    "stripe": "^22.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1"
   }
 }
